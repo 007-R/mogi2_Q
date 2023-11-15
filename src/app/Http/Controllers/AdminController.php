@@ -32,7 +32,6 @@ class AdminController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        // ログアウトしたらログインフォームにリダイレクト
         return redirect('login.index')->with([
             'auth' => ['ログアウトしました'],
         ]);
@@ -57,6 +56,6 @@ class AdminController extends Controller
         ]);
 
         $masters = Master::all();
-        return view('admin.master_edit', compact('masters'));
+        return view('admin.master_edit', compact('masters'))-> with('message', '代表者を新規登録しました');
     }
 }

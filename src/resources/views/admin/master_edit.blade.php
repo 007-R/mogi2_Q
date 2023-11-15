@@ -1,15 +1,18 @@
 @extends('layouts.app')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/admin_main.css') }}">
+<link rel="stylesheet" href="{{ asset('css/master_edit.css') }}">
 @endsection
 
 @section('content')
+@if (session('message'))
+    <div class="success">{{ session('message') }}</div>
+@endif
 <div class='mypage'>
     <div class=''>
         <h3>店舗代表者の作成</h3>
         <div class='reserve_card'>
-            <form class='master_creation' method='post' action='create_master'>
+            <form class='master_creation' method='post' action='admin/create_master'>
             @csrf
             <div class='name_input'>
                 <input name='name' type='text' placeholder='Name', value="{{old('name')}}">
@@ -26,7 +29,7 @@
         </div>
         <h3>登録中の店舗代表者</h3>
         <table>
-        <tr><th>master_id</th><th>代表者名</th><th>担当店舗</th></tr>
+        <tr><th>master_id</th><th>代表者名</th><th>担当店舗ID</th></tr>
         @foreach($masters as $master)
         <tr>
             <td>{{$master['userid']}}</td>
@@ -35,14 +38,16 @@
         </tr>
         @endforeach
         </table>
+        <div>
+            <form class='form' action='/logout' method='post'>
+                @csrf
+            <button class="logout_button" type='submit'><a>Logout</a></button></form>
+        </div>
     </div>
+
+
     @if (Auth::guard('administrators')->check())
         <div>管理者 {{ Auth::guard('administrators')->user()->userid }}でログイン中</div>
     @endif
-    <div>
-        <form class='form' action='/logout' method='post'>
-            @csrf
-        <button class="logout_button" type='submit'><a>Logout</a></button></form>
-    </div>
 </div>
 @endsection

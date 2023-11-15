@@ -13,6 +13,8 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 use Laravel\Fortify\Fortify;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\AuthenticatedSessionController;
+use Laravel\Fortify\Http\Controllers\RegisteredUserController;
 
 
 class FortifyServiceProvider extends ServiceProvider
@@ -40,4 +42,5 @@ class FortifyServiceProvider extends ServiceProvider
             return view('auth.verify-email');
         });
     }
+
 }

@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 
 use App\Http\Requests\UserLoginRequest;
-use Illuminate\Http\Request;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -16,7 +15,6 @@ class AuthenticatedSessionController extends Controller
     {
         return view('auth.login');
     }
-
 
     public function login(UserLoginRequest $request)
     {

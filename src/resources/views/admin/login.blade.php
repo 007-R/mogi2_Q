@@ -10,7 +10,7 @@
     <form class='login-form' method='post' action='/admin/login'>
         @csrf
         <div class='email_input'>
-            <input name='userid' placeholder='Email', value="{{old('email')}}">
+            <input name='userid' placeholder='ID', value="{{old('email')}}">
         </div>
         <div class="form__error">
             @error('email')

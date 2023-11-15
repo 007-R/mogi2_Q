@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\Message;
+use Illuminate\Support\Facades\Mail;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Shop;
 use App\Models\Area;
 use App\Models\Genre;
 use App\Models\Reservation;
-use App\Models\Master;
 
 
 
@@ -77,4 +79,14 @@ class MasterController extends Controller
         }
         return view('done')->with('message','店舗情報の修正');
     }
+
+    public function message(Request $request)
+    {
+        $mail_text = $request;
+        Mail::to($request->address)
+            ->send(new Message($mail_text));
+
+        return redirect('/master') -> with('message', 'メール送信しました');
+    }
+
 }

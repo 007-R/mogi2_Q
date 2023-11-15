@@ -18,6 +18,8 @@
         <p class='shop_type'>#{{ $shop['area']['name'] }} #{{ $shop['genre']['name'] }}</p>
         <p>{{ $shop -> description }}</p>
     </div>
+
+@if(Auth::check())
     <div class='reservation'>
         <h2 class='function_title'>予約</h2>
         <form class='reservation-form' method='post' action='/done'>
@@ -65,7 +67,7 @@
             </table>
         </div>
     </div>
-
+@endif
 
 
 

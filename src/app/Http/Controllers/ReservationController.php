@@ -10,6 +10,7 @@ use App\Models\Shop;
 use App\Models\Reputation;
 use Illuminate\Support\Facades\Auth;
 
+
 class ReservationController extends Controller
 {
     public function create(ReservationRequest $request)
@@ -34,7 +35,7 @@ class ReservationController extends Controller
     {
         $reserve_id = $request->reserve_id;
         Reservation::find($reserve_id)->delete();
-        return view('done');
+        return view('done')->with('message', '取消');
     }
     public function mypage(Request $request)
     {
@@ -42,7 +43,6 @@ class ReservationController extends Controller
         $reserve_info = Reservation::with('shop')->where('user_id', $user)->get();
         $favorite_info = Favorite::where('user_id', $user)->select('shop_id')->get();
         $shops = Shop::wherein('id', $favorite_info)->get();
-
         return view('mypage', compact("shops", "reserve_info", "favorite_info"));
     }
     public function change_info(Request $request)
@@ -87,6 +87,6 @@ class ReservationController extends Controller
             'comment' => $comment,
         ]);
 
-        return view('thanks');
+        return view('done') -> with('message', '評価');
     }
 }

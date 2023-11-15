@@ -5,6 +5,9 @@
 @endsection
 
 @section('content')
+@if (session('message'))
+    <div class="mail--success">{{ session('message') }}</div>
+@endif
 <div class='mypage'>
     <div class='reservation_info'>
         <h3>変更前</h3>
@@ -66,13 +69,21 @@
         <td>{{ $reserve['user']['name'] }}</td>
         <td>{{ $reserve['datetime'] }}</td>
         <td>{{ $reserve['number'] }}人</td>
-        <form action=''>
-            <td><input type='text'></td>
+        <form action='master/message' method='post'>
+            @csrf
+            <input type='hidden' name='address' value="{{ $reserve['user']['email'] }}">
+            <input type='hidden' name='customer' value="{{ $reserve['user']['name'] }}">
+            <input type='hidden' name='sender' value="{{ $shop_info['name'] }}">
+            <td><input type='text' name='mail_text'></td>
             <td><button type='submit'>送信</button></td>
         </form>
     </tr>
     @endforeach
     </table>
 </div>
-
+<div>
+    <form class='form' action='/logout' method='post'>
+        @csrf
+        <button class="logout_button" type='submit'><a>Logout</a></button></form>
+</div>
 @endsection

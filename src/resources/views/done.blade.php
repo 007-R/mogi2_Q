@@ -6,7 +6,7 @@
 
 @section('content')
 <div class='message'>
-    <p class='thanks_message'>ご{{$message}}ありがとうございます</p>
+    <p class='thanks_message'>{{$message}}ありがとうございます</p>
     <a class='return_button' href='/'>戻る</a>
 </div>
 

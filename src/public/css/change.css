@@ -34,7 +34,7 @@
 }
 
 .reservation_info {
-    border: solid 1px black;
+    /*border: solid 1px black;*/
     width: 25rem;
 }
 
@@ -59,7 +59,7 @@
 input,select {
     margin-left: 20px;
     height: 30px;
-    width: 80%;
+    width: 100%;
 }
 
 .card_top {

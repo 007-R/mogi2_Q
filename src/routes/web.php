@@ -6,6 +6,7 @@ use App\Http\Controllers\MasterController;
 use App\Http\Controllers\AuthenticatedSessionController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\PaymentController;
 /*
 
 |--------------------------------------------------------------------------
@@ -19,13 +20,9 @@ use App\Http\Controllers\ReservationController;
 */
 
 
-Route::get('/thanks', [AuthenticatedSessionController::class, 'thanks']);
 Route::get('/login', [AuthenticatedSessionController::class, 'tologin']);
 Route::post('/login', [AuthenticatedSessionController::class, 'login']);
-
-Route::middleware(['verified'])->group(function(){
-    Route::get('/', [ShopController::class, 'index']);
-});
+Route::get('/thanks',[AuthenticatedSessionController::class, 'thanks'])->middleware(['verified']);
 
 
 Route::get('/', [ShopController::class, 'index']);
@@ -60,8 +57,12 @@ Route::prefix('master')->group(function () {
     Route::post('login', [MasterController::class, 'login']);
     Route::post('logout', [MasterController::class, 'logout']);
     Route::post('edit', [MasterController::class, 'edit']);
+    Route::post('message', [MasterController::class, 'message']);
 });
 
 Route::prefix('master')->middleware('auth.masters:masters')->group(function () {
     Route::get('/', [MasterController::class, 'shop_edit']);
 });
+
+
+Route::post("/payment", [PaymentController::class, "payment"]);

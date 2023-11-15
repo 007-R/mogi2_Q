@@ -24,6 +24,8 @@
                     </form>
                 </div>
             </div>
+
+            <div class='reserve_info_area'>
             <div>
                 <table class='indivisual_info'>
                 <tr><th>Shop</th><td>{{ $reservation['shop']['name'] }}</td></tr>
@@ -32,13 +34,23 @@
                 <tr><th>Number</th> <td>{{ $reservation['number']  }}</td></tr>
                 </table>
             </div>
+            <div class='QR'>
+                {!! QrCode::size(40)->generate( $reservation["id"]) !!}
+            </div>
+            </div>
+
+
             <div class='button_area'>
                 <div>
+                    <?php
+                    $current_datetime = \Carbon\Carbon::now();
+                    if ($reservation['datetime'] >= $current_datetime) {?>
                     <form class='reservertion_change' method='post' action='/change_info'>
                         @csrf
                             <input type='hidden' name='reservation_id' value="{{ $reservation['id'] }}">
                             <button class='action_button' type='submit'>予約変更</button>
                     </form>
+                    <?php }?>
                 </div>
                 <div>
                     <?php
@@ -51,9 +63,19 @@
                     </form>
                     <?php }?>
                 </div>
-                <div class='QR'>
-                    {!! QrCode::size(50)->generate( $reservation["id"]) !!}
-                </div>
+            </div>
+            <div class='payment'>
+                <form action="{{ asset('payment') }}" method="POST">
+                    @csrf
+                    支払金額：<input name='amount' id='amount' type='number' class='payment_input'>円
+                    <script src="https://checkout.stripe.com/checkout.js"
+                    class="stripe-button" data-key="{{ env('STRIPE_PUBLIC_KEY')}}"
+                    data-amount=0 data-name="Stripe決済"
+                    data-label="決済"
+                    data-description="お支払い" data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                    data-locale="auto" data-currency="JPY" data-panel-label="お支払いする">
+                </script>
+                </form>
             </div>
         </div>
         @endforeach
