@@ -58,6 +58,13 @@ laravel8
 
 
 #環境構築
+1 docker環境構築（docker-compose up -d --build）
+２　 ファイルインストール(composer update --ignore-platform-req=ext-gd (phpコンテナ内）)
+3 .envファイル作成（touch .envにてファイル作成後、別途送付する内容を転記）
+4 migration(docker-compose php artisan migrate(phpコンテナ内）) *無効の場合は、migrate:fresh
+5 seeding(docker-compose php artisan db:seed(phpコンテナ内）)
+6 storage (php artisan storage:link(phpコンテナ内）)
+
 
 
 #その他(サンプルID(パスワード))
