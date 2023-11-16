@@ -58,6 +58,7 @@ laravel8.83.27
 
 
 #環境構築
+
 1 docker環境構築（docker-compose up -d --build）
 
 ２　 vendorファイルインストール(composer update(phpコンテナ内） * エラー発生時は「--ignore-platform-req=ext-gd」追加して実行)
@@ -81,6 +82,6 @@ https://drive.google.com/drive/folders/1av-ZAqjSW74QRa8ljmWG38C6rS4udip1
 
 ユーザー：shaftsbury_works@yahoo.co.jp(password)
 
-店鋪代表者：master1(password)
+店鋪代表者：master1(password)　*/master/loginからログイン
 
-サイト管理者：admin(password)
+サイト管理者：admin(password)　*/admin/loginからログイン
