@@ -3,7 +3,7 @@ Rese
 ![image](https://github.com/007-R/mogi2_Q/assets/66697562/5cffcdf2-0378-47c7-b051-dda4f01f712c)
 
 #目的
-飲食店予約サービス
+飲食店予約サービスの提供
 
 #アプリケーションURL
 http://127.0.0.1
@@ -37,7 +37,7 @@ http://127.0.0.1
 /決済機能
 
 #使用技術
-laravel8
+laravel8.83.27
 
 #テーブル設計
 
@@ -59,11 +59,21 @@ laravel8
 
 #環境構築
 1 docker環境構築（docker-compose up -d --build）
-２　 ファイルインストール(composer update --ignore-platform-req=ext-gd (phpコンテナ内）)
-3 .envファイル作成（touch .envにてファイル作成後、別途送付する内容を転記）
-4 migration(docker-compose php artisan migrate(phpコンテナ内）) *無効の場合は、migrate:fresh
+
+２　 vendorファイルインストール(composer update(phpコンテナ内） * エラー発生時は「--ignore-platform-req=ext-gd」追加して実行)
+
+3 .envファイル作成（touch .envにてファイル作成後、以下URLファイルの内容を転記）
+https://drive.google.com/file/d/1RncpIPPmkoqEblJrLFfkPPZTuO1FQTig/view?usp=sharing
+
+4 migration(docker-compose php artisan migrate(phpコンテナ内）) 
+
 5 seeding(docker-compose php artisan db:seed(phpコンテナ内）)
-6 storage (php artisan storage:link(phpコンテナ内）)
+
+6 storageリンク作成 (php artisan storage:link(phpコンテナ内）)
+
+7 src/storage/app/publicに、以下URLのファイルを保管
+
+https://drive.google.com/drive/folders/1av-ZAqjSW74QRa8ljmWG38C6rS4udip1
 
 
 
