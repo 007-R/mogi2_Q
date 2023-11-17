@@ -54,7 +54,8 @@ laravel8.83.27
 
 #ER図
 
-![image](https://github.com/007-R/mogi2_Q/assets/66697562/09d83ea1-a529-4777-a0af-7515ccce925c)
+![image](https://github.com/007-R/mogi2_Q/assets/66697562/6e3a0732-3fc3-4978-8b64-012fd3c33337)
+
 
 
 #環境構築
